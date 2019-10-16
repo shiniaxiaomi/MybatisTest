@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 1.mapper:根标签; 2.namespace：命名空间,保证命名空间唯一即可 -->
+<mapper namespace="MyMapper">
+    <!-- id：唯一标识,保证同一个命名空间下唯一即可
+       resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
+     -->
+    <select id="selectUser" resultType="test2.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!-- parameterType指定传入的参数类型 -->
+    <insert id="insertUser" parameterType="test2.User">
+        insert into user (name,age) VALUES (#{name},#{age});
+    </insert>
+
+
+    <update id="updateUser" parameterType="test2.User">
+        update user set age=#{age} where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="Integer">
+        delete FROM user where id = #{id}
+    </delete>
+</mapper>
