@@ -24,4 +24,40 @@
     <delete id="deleteUser" parameterType="Integer">
         delete FROM user where id = #{id}
     </delete>
+
+    <select id="selectTest" resultType="test2.User">
+        SELECT * from USER
+        <!--<where>-->
+            <!--<if test="id!=null">and id=#{id}</if>-->
+            <!--<if test="age!=null">and age=#{age}</if>-->
+        <!--</where>-->
+
+        <trim prefix="where" prefixOverrides="and" suffix="" suffixOverrides="">
+            <if test="id!=null">and id=#{id}</if>
+            <if test="age!=null">and age=#{age}</if>
+        </trim>,
+    </select>
+
+    <update id="upateTest" parameterType="test2.User">
+        <!--update USER-->
+        <!--<set>-->
+            <!--<if test="age!=null">age=#{age},</if>-->
+            <!--<if test="name!=null">name=#{name},</if>-->
+        <!--</set>-->
+        <!--where id=#{id}-->
+
+        update USER
+        <trim prefix="set" suffixOverrides=",">
+            <if test="age!=null">age=#{age},</if>
+            <if test="name!=null">name=#{name},</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+    <select id="ccc">
+        SELECT * from
+        <trim prefix="where" prefixOverrides=",">
+            <if test="age!=null">and age=#{age}</if>
+        </trim>
+    </select>
 </mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by Yingjie.Lu on 2019/10/16.
@@ -23,18 +24,27 @@ public class MybatisTest {
         try {
             //查询
             User user = sqlSession.selectOne("MyMapper.selectUser", 1);//(命令空间+id,传入的参数)
+            User user1 = sqlSession.selectOne("MyMapper.selectUser", 1);//(命令空间+id,传入的参数)
             System.out.println(user);
-            //新增
-            int insert = sqlSession.insert("MyMapper.insertUser", new User("zhangsan", 1));
-            System.out.println(insert);
-            //修改
-            int update = sqlSession.update("MyMapper.updateUser", new User(1, null, 2));
-            System.out.println(update);
-            //删除
-            int delete = sqlSession.delete("MyMapper.deleteUser", 1);
-            System.out.println(delete);
+//            //新增
+//            int insert = sqlSession.insert("MyMapper.insertUser", new User("zhangsan", 1));
+//            System.out.println(insert);
+//            //修改
+//            int update = sqlSession.update("MyMapper.updateUser", new User(1, null, 2));
+//            System.out.println(update);
+//            //删除
+//            int delete = sqlSession.delete("MyMapper.deleteUser", 1);
+//            System.out.println(delete);
+
+
+//            User user = sqlSession.selectOne("MyMapper.selectTest", new User(1, "1", 1));
+//            System.out.println(user);
+
+//            int update = sqlSession.update("MyMapper.upateTest", new User(1, null, 1));
+//            System.out.println(update);
+
             //提交事务
-            sqlSession.commit();
+//            sqlSession.commit();
         } finally {
             //关闭sqlSession
             sqlSession.close();

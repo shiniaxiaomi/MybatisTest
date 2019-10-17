@@ -5,9 +5,9 @@ package test2;
  */
 public class User {
 
-    int id;
+    Integer id;
     String name;
-    int age;
+    Integer age;
 
     public User() {
     }
@@ -17,7 +17,7 @@ public class User {
         this.age = age;
     }
 
-    public User(int id, String name, int age) {
+    public User(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
